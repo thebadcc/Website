@@ -1344,4 +1344,83 @@ ul.tabs li.current{
   margin: 2em 0;
 }
 
+.map-container {    
+	top: 50%;    
+	left: 50%;    
+	-webkit-transform: translate(-50%, -50%);    
+	-ms-transform: translate(-50%, -50%);    
+	-o-transform: translate(-50%, -50%);    
+	transform: translate(-50%, -50%);  
+} 
+.hole {    
+	box-shadow: inset 0px 0px 5px 6px #cdcdcd;  
+}  
 
+  .dot {    
+	  animation: wobble 1.5s cubic-bezier(.30,0,.6,1) infinite;  
+}  
+@keyframes wobble {    
+	0% {      
+		transform: translateY(0);   
+	}    
+	50% {      
+		transform: translateY(-4px);    
+	}    100% 
+	{      
+		transform: translateY(0);    
+	}  
+}  
+
+  .boat {    
+	  background: #EE6648 !important;    
+	  border-radius: 0 0 5px 5px !important;    
+	  width: 18px !important;    
+	  height: 5px !important;    
+	  margin-top: 10px !important;    
+	  box-shadow: none !important;  
+}  
+.boat:before,  .boat:after {    
+	content: "";    
+	position: absolute;    
+	border-style: solid;  
+}  
+.boat:before {    
+	top: -14px;    
+	left: 10px;    
+	border-width: 12px 0 0 8px;    
+	border-color: transparent transparent transparent #FFF8ED;  
+}  
+.boat:after {   
+	top: -11px;   
+	left: 0px;  
+	border-width: 0 0 9px 8px;  
+	border-color: transparent transparent #FFF8ED transparent;  
+}  
+
+  .teleport-out {    
+	  transform-origin: 50% 50%;    
+	  transform: scale(1.1);    
+	  animation: teleportout .4s 1 cubic-bezier(.84,-0.54,.7,.99) forwards;  
+}  
+
+@keyframes teleportout {   
+	0%  {      
+		transform: scale(1.1);    
+	}    
+	100%  {      
+		transform: scale(0.0);    
+	}  
+}  
+.teleport-in {    
+	transform-origin: 50% 50%;   
+	transform: scale(0.0);   
+	animation: teleportin .4s 1 cubic-bezier(.45,.08,.46,1.63) forwards;  
+} 
+@keyframes teleportin {
+	0%  {      
+		transform: scale(0.0);    
+	}    
+	100%  {      
+		transform: scale(1.1);    
+	}  
+}  
