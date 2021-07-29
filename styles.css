@@ -770,24 +770,6 @@ padding: 10px;
   justify-content: center;
 }
 
-.card {
-  display: flex;
-  border-radius: 5px;
-  justify-content: center;
-}
-
-.avatar {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-}
-
-.image {
-  width: 200px;
-  height: auto;
-}
-
-
 .col--1 {
     float: left;
     display: block;
