@@ -202,8 +202,8 @@ async function getAccount() {
     $('.login').fadeOut();
     $('.page').fadeIn();
 	$('#nav1').fadeIn();
+	$('#nav2').fadeIn();
 	$('#nav3').fadeIn();
-	$('#nav4').fadeIn();
     row.style = "display: none !important";
     legalLinks.style = "display: block !important";
     metaMaskRequired.style = "display: none !important";
