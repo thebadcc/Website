@@ -804,13 +804,6 @@ padding: 10px;
 	
 }
 
-@media (max-width: 542px) {
-.image {
-    width: 60vw;
-    height: auto;
-}
-}
-
 
 /* world map */
 
