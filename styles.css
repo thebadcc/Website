@@ -362,11 +362,6 @@ background-size: cover;
   margin: 0;
   padding: 0;
 }
-.item {
-  padding: 5px;
-  width: 400px;
-  margin: 10px;
-}
 
 .right img {
 	width:100%;
