@@ -361,22 +361,18 @@ function toggleAccordion() {
 items.forEach(item => item.addEventListener('click', toggleAccordion));
 
 var container, sqr;
-var terrain = [25, 20]; // => [lenght, scale]
-var coords = [];
-
-var container, sqr;
-var terrain = [25, 20]; // => [lenght, scale]
+var terrain = [25, 20]; 
 var coords = [];
 
 var type = [
-    ['deepsea', '#000000'],  //0
-    ['sea', '#3e3e3e'],      //1
-    ['coast', '#cdcdcd'],    //2
-    ['land', '#909090'],     //3
-    ['forest', '#292929'],   //4
-    ['mountain', '#ffffff'], //5
-    ['hole', '#3A2612']      //6
-]; // => [type, color]
+    ['deepsea', '#000000'],  
+    ['sea', '#3e3e3e'],      
+    ['coast', '#cdcdcd'],    
+    ['land', '#909090'],     
+    ['forest', '#292929'],   
+    ['mountain', '#ffffff'], 
+    ['hole', '#3A2612']      
+]; 
 
 var pattern = [
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -406,40 +402,29 @@ var pattern = [
     0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0
 ];
 
-//Dot:
 var dot;
-var dotCoords = [13, 7] //Set 'dot' initial position. => [x, y]
-var dotSpeed = 200; //ms.
-var dotTeleportSpeed = 500; //ms.
+var dotCoords = [13, 7] 
+var dotSpeed = 200; 
+var dotTeleportSpeed = 500; 
 var activeTransition = false;
 
 var dotColor = [
   'linear-gradient(45deg, rgba(46,244,205,0) 30%,rgba(198,171,203,0) 60%,rgba(246,148,203,1) 100%), radial-gradient(ellipse at center, rgba(76,110,207,0) 27%,rgba(76,110,207,0.33) 51%,rgba(89,88,179,0.58) 69%,rgba(89,78,183,1) 100%), linear-gradient(80deg, rgba(246,148,203,0) 0%,rgba(70,232,205,.1) 70%,rgba(46,244,205,1) 100%), linear-gradient(45deg, rgba(46,244,205,1) 0%,rgba(76,110,207,0.2) 50%,rgba(76,110,207,0) 60%)',
   '#FFFFFF'
-]; // => [default, secondary]
-
-
-//=====================
-//=====================
-//Functions:
-//=====================
-//=====================
-
-//Set coords:
+]; 
 function setCoords(c, x, y, t){
   $(c).attr("data-x", x);
   $(c).attr("data-y", y);
   $(c).attr("title", t);
-}; // => setCoords(element, coord-x, coord-y, title)
+}; 
 
-//Terrain type exceptions:
 function exception(x, y, type){
   return $('div[class^="sqr"][data-x="'+x+'"][data-y="'+y+'"]').hasClass(type);
-}; // => exception(coord-x, coord-y, type)
+}; 
 
-//Special material events:
+
 function circumstance(){
-  //'Watter' toggle:
+
   if ( exception(dotCoords[0], dotCoords[1], "sea") || exception(dotCoords[0], dotCoords[1], "deepsea") ){
     $(".dot").css({
       'background': dotColor[1]
@@ -452,22 +437,19 @@ function circumstance(){
     });
     $(".dot").removeClass("boat");
   };
-  //'Tunnels' teleport:
+
   if ( exception(dotCoords[0], dotCoords[1], "hole") ){
     teleport();
   };
 };
 
-//Teleport:
+
 function teleport(){
-  //Select a random 'hole':
+ 
   var randNum = Math.floor(Math.random()*$('.hole').length);
-  //Update coords:
   dotCoords[0] = $(".hole").eq(randNum).attr("data-x");
   dotCoords[1] = $(".hole").eq(randNum).attr("data-y");
-  //Transfer coords:
   setCoords(".dot", dotCoords[0], dotCoords[1], 'dot ['+dotCoords+']');
-  //Animate 'dot':
   $(".dot").addClass("teleport-out");
   setTimeout(function(){
     $(".dot").stop().animate(
@@ -479,32 +461,18 @@ function teleport(){
       function(){
         $(".dot").removeClass("teleport-out").addClass("teleport-in");
         setTimeout(function(){
-          $(".dot").removeClass("teleport-in"); //Reload the 'wobble' animation.
+          $(".dot").removeClass("teleport-in"); 
         }, dotTeleportSpeed);
       }
     );   
   }, dotTeleportSpeed);
-  //Debug:
+
   console.log(dotCoords);
 };
 
 
-//=====================
-//=====================
-//There we go!
-//=====================
-//=====================
 $(document).ready(function(){
 
-  //=====================
-  //=====================
-  //Terrain:
-  //=====================
-  //=====================
-
-
-
-  //Styling:
   $(".map-container").css({
     'box-sizing': 'border-box',
     'position': 'absolute',
@@ -516,28 +484,17 @@ $(document).ready(function(){
   });
 
 
-  //=====================
-  //=====================
-  //Pattern:
-  //=====================
-  //=====================
-
-  //Loop pattern:
   for (i=0; i<pattern.length; i++) {
 
-    //Get coords:
-    coords[0] = i%terrain[0]; //Define rows. => [x]
-    coords[1] = Math.floor(i/terrain[0]); //Define cols. => [y]
+    coords[0] = i%terrain[0]; 
+    coords[1] = Math.floor(i/terrain[0]); 
 
-    //Constructor:
     sqr = '<div class="sqr'+i+'"></div>';
     $(".map-container").append(sqr);
 
-    //Set coords and material type:
     setCoords(".sqr"+i, coords[0], coords[1], type[pattern[i]][0]+' ['+coords+']');
     $(".sqr"+i).addClass(type[pattern[i]][0]);
 
-    //Styling:
     $(".sqr"+i).css({
       'box-sizing': 'border-box',
       'position': 'absolute',
@@ -548,7 +505,6 @@ $(document).ready(function(){
       'background': type[pattern[i]][1]
     });
     
-    //Round corners ('forest'):
     if (
       $(".sqr"+i).hasClass("forest") &&
       pattern[i] != pattern[i-1] &&
@@ -586,7 +542,6 @@ $(document).ready(function(){
       });
     };
 
-    //Round corners ('mountain'):
     if (
       $(".sqr"+i).hasClass("mountain") &&
       pattern[i] != pattern[i-1] &&
@@ -626,21 +581,11 @@ $(document).ready(function(){
 
   };
 
-
-  //=====================
-  //=====================
-  //Dot:
-  //=====================
-  //=====================
-
-  //Constructor:
   dot = '<div class="dot"></div>';
   $(".map-container").append(dot);
   
-  //Set coords:
   setCoords(".dot", dotCoords[0], dotCoords[1], 'dot ['+dotCoords+']');
 
-  //Styling:
   $(".dot").css({
     'box-sizing': 'border-box',
     'position': 'absolute',
@@ -653,77 +598,66 @@ $(document).ready(function(){
     'z-index': '1'
   });
 
-  //Special material events:
   circumstance();
   
-  //'Dot' animate:
   $(document).keydown(function(e){
     if ( !activeTransition ){
       activeTransition = true;
       switch ( e.which ){
 
-        //Up:
         case 38:
           if ( dotCoords[1] > 0 && !exception(dotCoords[0], parseInt(dotCoords[1])-1, "mountain" ) ){
-            //Get new position:
             dotCoords[1] = parseInt(dotCoords[1])-1;
             setCoords(".dot", dotCoords[0], dotCoords[1], 'dot ['+dotCoords+']');
-            //Move:
             $(".dot").stop().animate(
               {
                 top: dotCoords[1]*terrain[1]
               },
               dotSpeed
             );
-          }; //Scenario limits and 'mountain' blocking.
+          }; 
         break;
 
-        //Forward:
         case 39:
           if ( dotCoords[0] < coords[0] && !exception(parseInt(dotCoords[0])+1,dotCoords[1], "mountain" ) ){
-            //Get new position:
             dotCoords[0] = parseInt(dotCoords[0])+1;
             setCoords(".dot", dotCoords[0], dotCoords[1], 'dot ['+dotCoords+']');
-            //Move:
             $(".dot").stop().animate(
               {
                 left: dotCoords[0]*terrain[1]
               },
               dotSpeed
             );
-          }; //Scenario limits and 'mountain' blocking.
+          }; 
         break;
 
-        //Down:
         case 40:
         if ( dotCoords[1] < coords[1] && !exception(dotCoords[0], parseInt(dotCoords[1])+1, "mountain" ) ){
-          //Get new position:
+
           dotCoords[1] = parseInt(dotCoords[1])+1;
           setCoords(".dot", dotCoords[0], dotCoords[1], 'dot ['+dotCoords+']');
-          //Move:
+ 
           $(".dot").stop().animate(
             {
               top: dotCoords[1]*terrain[1]
             },
             dotSpeed
           );
-        }; //Scenario limits and 'mountain' blocking.
+        }; 
         break;
 
-        //Back:
         case 37:
           if ( dotCoords[0] > 0 && !exception(parseInt(dotCoords[0])-1, dotCoords[1], "mountain" ) ){
-            //Get new position:
             dotCoords[0] = parseInt(dotCoords[0])-1;
             setCoords(".dot", dotCoords[0], dotCoords[1], 'dot ['+dotCoords+']');
-            //Move:
+
             $(".dot").stop().animate(
               {
                 left: dotCoords[0]*terrain[1]
               },
               dotSpeed
             );
-          }; //Scenario limits and 'mountain' blocking.
+          }; 
         break;
 
       };
