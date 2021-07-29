@@ -360,7 +360,6 @@ function toggleAccordion() {
 
 items.forEach(item => item.addEventListener('click', toggleAccordion));
 
-
 var container, sqr;
 var terrain = [25, 20]; // => [lenght, scale]
 var coords = [];
@@ -726,11 +725,8 @@ $(document).ready(function(){
       };
       activeTransition = false;
     };
-
-    //Special material events:
     circumstance();
-
-    //Debug:
     console.log("x:"+dotCoords[0]+" y:"+dotCoords[1]);
   });
 
+}); 
