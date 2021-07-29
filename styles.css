@@ -811,38 +811,6 @@ padding: 10px;
 }
 }
 
-/* Terms Tabs*/
-
-ul.tabs{
-	margin: 0px;
-	padding: 0px;
-	list-style: none;
-}
-ul.tabs li{
-    background: white;
-    color: #222;
-    display: inline-block;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 32%);	
-}
-
-ul.tabs li.current{
-	background: black;
-    	color: white;
-}
-
-.tab-content{
-	display: none;
-
-}
-
-.tab-content.cu}rent{
-	display: inherit;
-	background: black;
-}
 
 /* world map */
 
