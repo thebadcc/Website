@@ -752,61 +752,6 @@ float: left;
 }
 	
 }
-	
-.inputForm {
-margin-bottom: 15px;
-    width: 100%;
-    background: #dcdcdc;
-    font-size: 18;
-    color: black;
-    border-radius: 5px;
-    padding: 5px;
-	outline: auto;
-}
-
-.executeTx {
-  background: black;
-    border: solid 1px white;
-    color: white;
-    font-size: 14px;
-    float: right;
-    border-radius: 5px;
-    padding: 5px;
-}
-
-.dataFunction {
-width: 100%;
-    background: black;
-    border: none;
-    color: white;
-    font-size: 20;
-    font-family: system-ui;
-    padding-bottom: 10px;
-    outline: none;
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	appearance: auto;
-}
-
-.dataFunction::-ms-expand {
-    display: none;
-}
-
-.responseWrapper {
-	margin: 0;
-}
-
-.response {
- 	color: white;
-	margin-left:2px;	
-}
-
-#responseCall {
-	color: white;
-}
-
-.functionWrapper {
-}
 
 .badCode {
 padding: 10px;
