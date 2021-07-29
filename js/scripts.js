@@ -361,4 +361,376 @@ function toggleAccordion() {
 items.forEach(item => item.addEventListener('click', toggleAccordion));
 
 
+var container, sqr;
+var terrain = [25, 20]; // => [lenght, scale]
+var coords = [];
+
+var type = [
+    ['deepsea', '#000000'],  //0
+    ['sea', '#3e3e3e'],      //1
+    ['coast', '#cdcdcd'],    //2
+    ['land', '#909090'],     //3
+    ['forest', '#292929'],   //4
+    ['mountain', '#ffffff'], //5
+    ['hole', '#3A2612']      //6
+]; // => [type, color]
+
+var pattern = [
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,1,1,1,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,
+    0,0,0,0,1,1,2,2,1,1,1,2,2,2,1,1,1,1,1,1,0,0,0,0,0,
+    0,0,0,1,1,2,2,2,2,1,2,2,3,2,2,2,1,1,1,1,1,0,0,0,0,
+    0,0,0,0,1,2,2,6,2,2,2,3,3,3,3,2,2,2,1,1,1,1,0,0,0,
+    0,0,1,1,1,2,2,3,3,2,2,3,3,3,3,2,2,2,2,2,1,1,0,0,0,
+    0,0,1,1,2,2,3,3,3,3,3,3,3,3,3,3,2,2,6,2,2,1,1,0,0,
+    0,1,1,2,2,3,3,3,3,3,4,4,4,3,3,3,3,2,2,2,2,1,1,0,0,
+    1,1,2,2,2,3,3,4,4,4,5,4,3,3,4,4,3,3,3,3,2,1,1,0,0,
+    1,2,2,2,3,3,4,5,5,4,4,4,4,4,4,5,4,3,3,3,2,2,1,1,0,
+    1,6,2,3,3,4,4,5,5,5,4,4,4,5,4,4,4,4,3,3,3,2,1,1,0,
+    1,2,2,2,3,3,4,5,5,5,4,4,5,5,5,5,4,3,3,3,3,2,2,1,1,
+    1,1,2,2,3,3,4,4,5,4,4,4,5,5,5,5,5,4,3,3,3,3,2,1,1,
+    0,1,1,2,3,3,3,4,4,3,4,4,5,5,5,5,5,4,4,3,3,3,2,1,1,
+    0,1,1,2,2,3,3,3,3,3,3,4,4,5,5,5,5,4,3,3,3,2,2,1,0,
+    0,1,1,1,2,2,4,4,3,3,4,5,4,5,5,4,4,3,3,3,2,2,1,1,0,
+    0,0,1,1,1,2,3,4,4,3,4,4,5,4,5,4,3,3,3,2,2,1,1,0,0,
+    0,0,0,1,2,2,6,3,3,3,3,4,4,4,4,3,3,3,2,2,1,1,1,0,0,
+    0,0,0,1,1,2,2,3,3,3,3,3,4,4,3,3,6,2,2,1,1,0,0,0,0,
+    0,0,0,0,1,1,2,2,3,2,3,3,3,3,3,2,2,2,1,1,1,0,0,0,0,
+    0,0,0,0,1,1,1,2,2,2,2,2,3,3,3,2,2,1,1,1,0,0,0,0,0,
+    0,0,0,0,0,1,1,1,1,1,2,2,2,2,3,2,1,1,1,1,0,0,0,0,0,
+    0,0,0,0,0,0,0,1,1,1,1,2,1,2,2,6,1,1,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0
+];
+
+//Dot:
+var dot;
+var dotCoords = [13, 7] //Set 'dot' initial position. => [x, y]
+var dotSpeed = 200; //ms.
+var dotTeleportSpeed = 500; //ms.
+var activeTransition = false;
+
+var dotColor = [
+  'linear-gradient(45deg, rgba(46,244,205,0) 30%,rgba(198,171,203,0) 60%,rgba(246,148,203,1) 100%), radial-gradient(ellipse at center, rgba(76,110,207,0) 27%,rgba(76,110,207,0.33) 51%,rgba(89,88,179,0.58) 69%,rgba(89,78,183,1) 100%), linear-gradient(80deg, rgba(246,148,203,0) 0%,rgba(70,232,205,.1) 70%,rgba(46,244,205,1) 100%), linear-gradient(45deg, rgba(46,244,205,1) 0%,rgba(76,110,207,0.2) 50%,rgba(76,110,207,0) 60%)',
+  '#FFFFFF'
+]; // => [default, secondary]
+
+
+//=====================
+//=====================
+//Functions:
+//=====================
+//=====================
+
+//Set coords:
+function setCoords(c, x, y, t){
+  $(c).attr("data-x", x);
+  $(c).attr("data-y", y);
+  $(c).attr("title", t);
+}; // => setCoords(element, coord-x, coord-y, title)
+
+//Terrain type exceptions:
+function exception(x, y, type){
+  return $('div[class^="sqr"][data-x="'+x+'"][data-y="'+y+'"]').hasClass(type);
+}; // => exception(coord-x, coord-y, type)
+
+//Special material events:
+function circumstance(){
+  //'Watter' toggle:
+  if ( exception(dotCoords[0], dotCoords[1], "sea") || exception(dotCoords[0], dotCoords[1], "deepsea") ){
+    $(".dot").css({
+      'background': dotColor[1]
+    });
+    $(".dot").addClass("boat");
+  }
+  else {
+    $(".dot").css({
+      'background': dotColor[0]
+    });
+    $(".dot").removeClass("boat");
+  };
+  //'Tunnels' teleport:
+  if ( exception(dotCoords[0], dotCoords[1], "hole") ){
+    teleport();
+  };
+};
+
+//Teleport:
+function teleport(){
+  //Select a random 'hole':
+  var randNum = Math.floor(Math.random()*$('.hole').length);
+  //Update coords:
+  dotCoords[0] = $(".hole").eq(randNum).attr("data-x");
+  dotCoords[1] = $(".hole").eq(randNum).attr("data-y");
+  //Transfer coords:
+  setCoords(".dot", dotCoords[0], dotCoords[1], 'dot ['+dotCoords+']');
+  //Animate 'dot':
+  $(".dot").addClass("teleport-out");
+  setTimeout(function(){
+    $(".dot").stop().animate(
+      {
+        left: dotCoords[0]*terrain[1],
+        top: dotCoords[1]*terrain[1]
+      }, 
+      0,
+      function(){
+        $(".dot").removeClass("teleport-out").addClass("teleport-in");
+        setTimeout(function(){
+          $(".dot").removeClass("teleport-in"); //Reload the 'wobble' animation.
+        }, dotTeleportSpeed);
+      }
+    );   
+  }, dotTeleportSpeed);
+  //Debug:
+  console.log(dotCoords);
+};
+
+
+//=====================
+//=====================
+//There we go!
+//=====================
+//=====================
+$(document).ready(function(){
+
+  //=====================
+  //=====================
+  //Terrain:
+  //=====================
+  //=====================
+
+
+
+  //Styling:
+  $(".map-container").css({
+    'box-sizing': 'border-box',
+    'position': 'absolute',
+    'width': terrain[0]*terrain[1]+'px',
+    'height': terrain[0]*terrain[1]+'px',
+    'background': type[3][1],
+    'overflow': 'hidden',
+    'cursor': 'crosshair'
+  });
+
+
+  //=====================
+  //=====================
+  //Pattern:
+  //=====================
+  //=====================
+
+  //Loop pattern:
+  for (i=0; i<pattern.length; i++) {
+
+    //Get coords:
+    coords[0] = i%terrain[0]; //Define rows. => [x]
+    coords[1] = Math.floor(i/terrain[0]); //Define cols. => [y]
+
+    //Constructor:
+    sqr = '<div class="sqr'+i+'"></div>';
+    $(".map-container").append(sqr);
+
+    //Set coords and material type:
+    setCoords(".sqr"+i, coords[0], coords[1], type[pattern[i]][0]+' ['+coords+']');
+    $(".sqr"+i).addClass(type[pattern[i]][0]);
+
+    //Styling:
+    $(".sqr"+i).css({
+      'box-sizing': 'border-box',
+      'position': 'absolute',
+      'top': coords[1]*terrain[1]+'px',
+      'left': coords[0]*terrain[1]+'px',
+      'width': terrain[1]+'px',
+      'height': terrain[1]+'px',
+      'background': type[pattern[i]][1]
+    });
+    
+    //Round corners ('forest'):
+    if (
+      $(".sqr"+i).hasClass("forest") &&
+      pattern[i] != pattern[i-1] &&
+      pattern[i] != pattern[i-terrain[0]]
+    ){
+      $(".sqr"+i).css({
+        'border-top-left-radius': terrain[1]/2
+      });
+    };
+    if (
+      $(".sqr"+i).hasClass("forest") &&
+      pattern[i] != pattern[i+1] &&
+      pattern[i] != pattern[i-terrain[0]]
+    ){
+      $(".sqr"+i).css({
+        'border-top-right-radius': terrain[1]/2
+      });
+    };
+    if (
+      $(".sqr"+i).hasClass("forest") &&
+      pattern[i] != pattern[i+1] &&
+      pattern[i] != pattern[i+terrain[0]]
+    ){
+      $(".sqr"+i).css({
+        'border-bottom-right-radius': terrain[1]/2
+      });
+    };
+    if (
+      $(".sqr"+i).hasClass("forest") &&
+      pattern[i] != pattern[i-1] &&
+      pattern[i] != pattern[i+terrain[0]]
+    ){
+      $(".sqr"+i).css({
+        'border-bottom-left-radius': terrain[1]/2
+      });
+    };
+
+    //Round corners ('mountain'):
+    if (
+      $(".sqr"+i).hasClass("mountain") &&
+      pattern[i] != pattern[i-1] &&
+      pattern[i] != pattern[i-terrain[0]]
+    ){
+      $(".sqr"+i).css({
+        'border-top-left-radius': terrain[1]/2
+      });
+    };
+    if (
+      $(".sqr"+i).hasClass("mountain") &&
+      pattern[i] != pattern[i+1] &&
+      pattern[i] != pattern[i-terrain[0]]
+    ){
+      $(".sqr"+i).css({
+        'border-top-right-radius': terrain[1]/2
+      });
+    };
+    if (
+      $(".sqr"+i).hasClass("mountain") &&
+      pattern[i] != pattern[i+1] &&
+      pattern[i] != pattern[i+terrain[0]]
+    ){
+      $(".sqr"+i).css({
+        'border-bottom-right-radius': terrain[1]/2
+      });
+    };
+    if (
+      $(".sqr"+i).hasClass("mountain") &&
+      pattern[i] != pattern[i-1] &&
+      pattern[i] != pattern[i+terrain[0]]
+    ){
+      $(".sqr"+i).css({
+        'border-bottom-left-radius': terrain[1]/2
+      });
+    };
+
+  };
+
+
+  //=====================
+  //=====================
+  //Dot:
+  //=====================
+  //=====================
+
+  //Constructor:
+  dot = '<div class="dot"></div>';
+  $(".map-container").append(dot);
+  
+  //Set coords:
+  setCoords(".dot", dotCoords[0], dotCoords[1], 'dot ['+dotCoords+']');
+
+  //Styling:
+  $(".dot").css({
+    'box-sizing': 'border-box',
+    'position': 'absolute',
+    'width': terrain[1]+'px',
+    'height': terrain[1]+'px',
+    'top': dotCoords[1]*terrain[1]+'px',
+    'left': dotCoords[0]*terrain[1]+'px',
+    'border-radius': '100%',
+    'box-shadow': '0px 4px 4px -2px rgba(0, 0, 0, .2)',
+    'z-index': '1'
+  });
+
+  //Special material events:
+  circumstance();
+  
+  //'Dot' animate:
+  $(document).keydown(function(e){
+    if ( !activeTransition ){
+      activeTransition = true;
+      switch ( e.which ){
+
+        //Up:
+        case 38:
+          if ( dotCoords[1] > 0 && !exception(dotCoords[0], parseInt(dotCoords[1])-1, "mountain" ) ){
+            //Get new position:
+            dotCoords[1] = parseInt(dotCoords[1])-1;
+            setCoords(".dot", dotCoords[0], dotCoords[1], 'dot ['+dotCoords+']');
+            //Move:
+            $(".dot").stop().animate(
+              {
+                top: dotCoords[1]*terrain[1]
+              },
+              dotSpeed
+            );
+          }; //Scenario limits and 'mountain' blocking.
+        break;
+
+        //Forward:
+        case 39:
+          if ( dotCoords[0] < coords[0] && !exception(parseInt(dotCoords[0])+1,dotCoords[1], "mountain" ) ){
+            //Get new position:
+            dotCoords[0] = parseInt(dotCoords[0])+1;
+            setCoords(".dot", dotCoords[0], dotCoords[1], 'dot ['+dotCoords+']');
+            //Move:
+            $(".dot").stop().animate(
+              {
+                left: dotCoords[0]*terrain[1]
+              },
+              dotSpeed
+            );
+          }; //Scenario limits and 'mountain' blocking.
+        break;
+
+        //Down:
+        case 40:
+        if ( dotCoords[1] < coords[1] && !exception(dotCoords[0], parseInt(dotCoords[1])+1, "mountain" ) ){
+          //Get new position:
+          dotCoords[1] = parseInt(dotCoords[1])+1;
+          setCoords(".dot", dotCoords[0], dotCoords[1], 'dot ['+dotCoords+']');
+          //Move:
+          $(".dot").stop().animate(
+            {
+              top: dotCoords[1]*terrain[1]
+            },
+            dotSpeed
+          );
+        }; //Scenario limits and 'mountain' blocking.
+        break;
+
+        //Back:
+        case 37:
+          if ( dotCoords[0] > 0 && !exception(parseInt(dotCoords[0])-1, dotCoords[1], "mountain" ) ){
+            //Get new position:
+            dotCoords[0] = parseInt(dotCoords[0])-1;
+            setCoords(".dot", dotCoords[0], dotCoords[1], 'dot ['+dotCoords+']');
+            //Move:
+            $(".dot").stop().animate(
+              {
+                left: dotCoords[0]*terrain[1]
+              },
+              dotSpeed
+            );
+          }; //Scenario limits and 'mountain' blocking.
+        break;
+
+      };
+      activeTransition = false;
+    };
+
+    //Special material events:
+    circumstance();
+
+    //Debug:
+    console.log("x:"+dotCoords[0]+" y:"+dotCoords[1]);
+  });
 
