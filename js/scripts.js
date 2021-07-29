@@ -364,6 +364,10 @@ var container, sqr;
 var terrain = [25, 20]; // => [lenght, scale]
 var coords = [];
 
+var container, sqr;
+var terrain = [25, 20]; // => [lenght, scale]
+var coords = [];
+
 var type = [
     ['deepsea', '#000000'],  //0
     ['sea', '#3e3e3e'],      //1
@@ -728,5 +732,4 @@ $(document).ready(function(){
     circumstance();
     console.log("x:"+dotCoords[0]+" y:"+dotCoords[1]);
   });
-
 }); 
