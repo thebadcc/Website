@@ -1260,4 +1260,6 @@ ul.tabs li.current{
 
 .worldmap {
 	width: 100%;
+	cursor: url('https://github.com/thebadcc/thebad.cc/blob/main/images/e67839ecc7ea933.png?raw=true'), pointer; 
 }
+
