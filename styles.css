@@ -813,7 +813,7 @@ outline: auto;
 
 .worldmap {
 	width: 100%;
-	cursor: url('https://github.com/thebadcc/thebad.cc/blob/main/images/cursor.gif?raw=true'), pointer; 
+	cursor: url('https://github.com/thebadcc/thebad.cc/blob/main/images/cursor.gif?raw=true') 4 12, pointer; 
 }
 
 .portalImg {
