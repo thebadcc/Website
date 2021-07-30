@@ -825,6 +825,8 @@ padding: 10px;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    background: none;
+    border: none;
 }
 
 /* The actual popup */
