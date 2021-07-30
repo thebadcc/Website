@@ -813,7 +813,7 @@ outline: auto;
 
 .worldmap {
 	width: 100%;
-	cursor: url('https://github.com/thebadcc/thebad.cc/blob/main/images/cursor.gif?raw=true') 4 12, pointer; 
+	cursor: url('https://github.com/thebadcc/thebad.cc/blob/main/images/cursor.gif?raw=true') 45 45, pointer; 
 }
 
 .portalImg {
@@ -831,6 +831,7 @@ outline: auto;
     user-select: none;
     background: none;
     border: none;
+	cursor: url('https://github.com/thebadcc/thebad.cc/blob/main/images/cursor.gif?raw=true') 45 45, pointer;
 }
 
 /* The actual popup */
