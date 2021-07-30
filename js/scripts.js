@@ -319,7 +319,10 @@ sendEthButton.addEventListener('click', () => {
 });
 
 
-
+function p1() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
 
 
 
