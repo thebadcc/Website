@@ -812,13 +812,13 @@ padding: 10px;
 	cursor: url('https://github.com/thebadcc/thebad.cc/blob/main/images/e67839ecc7ea933.png?raw=true'), pointer; 
 }
 
-.houseImg {
+.portalImg {
 	width: inherit;
 }
 
-.house {
-    width: 3vw;
-    top: 15vw;
-    left: 10vw;
+.portal {
+    width: 4vw;
+    top: 32vw;
+    left: 31vw;
     position: absolute;
 }
