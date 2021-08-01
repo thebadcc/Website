@@ -324,16 +324,14 @@ function p1() {
   popup.classList.toggle("show");
 }
 
-
-
-	var map = L.map('map', {
+var map1 = L.map('map', {
 		crs: L.CRS.Simple
 	});
 
 	var bounds = [[0,0], [1000,1000]];
-	var image = L.imageOverlay('https://external-preview.redd.it/BmRe689L0zy5oLOx8DNkv4k2syGeqLAZpOpcIGXu6-w.png?auto=webp&s=c3ab200c4cbb60fe3989b6bf9b3a5cd174e104d3', bounds).addTo(map);
+	var image = L.imageOverlay('https://external-preview.redd.it/BmRe689L0zy5oLOx8DNkv4k2syGeqLAZpOpcIGXu6-w.png?auto=webp&s=c3ab200c4cbb60fe3989b6bf9b3a5cd174e104d3', bounds).addTo(map1);
 
-	map.fitBounds(bounds);
+	map1.fitBounds(bounds);
 
 
 var greenIcon = L.icon({
@@ -354,7 +352,7 @@ var xy = function(x, y) {
 };
 
 
-L.marker([550, 450], {icon: greenIcon}).addTo(map).bindPopup(    '<a target=blank href=#>16 Rand Extension</a>');
+L.marker([550, 450], {icon: greenIcon}).addTo(map1).bindPopup(    '<a target=blank href=#>16 Rand Extension</a>');
 
 
 
