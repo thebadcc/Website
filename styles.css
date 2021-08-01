@@ -881,26 +881,3 @@ display: none;
   to {opacity:1 ;}
 }
 
-
-/* world map v2 */
-
-
-.output2 {
-    border: 1px solid black;
-    height: 100%;
-    width: 50%;
-
-}
-
-.map_panel {
-    margin-left: 25%;
-    margin-top: 25%;
-    border: 1px solid black;
-    height: 50%;
-    width: 100%; /*changed the width from 50% to 100% so it is overlaping */
-}
-
-#map{
-  height: 100%;
-  width: 100%;
-}
