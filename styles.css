@@ -881,3 +881,7 @@ display: none;
   to {opacity:1 ;}
 }
 
+#mapid {
+	width:100%;
+	height:100%;
+}
