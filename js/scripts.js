@@ -326,4 +326,36 @@ function p1() {
 
 
 
+	var map = L.map('map', {
+		crs: L.CRS.Simple
+	});
+
+	var bounds = [[0,0], [1000,1000]];
+	var image = L.imageOverlay('https://external-preview.redd.it/BmRe689L0zy5oLOx8DNkv4k2syGeqLAZpOpcIGXu6-w.png?auto=webp&s=c3ab200c4cbb60fe3989b6bf9b3a5cd174e104d3', bounds).addTo(map);
+
+	map.fitBounds(bounds);
+
+
+var greenIcon = L.icon({
+    iconUrl: 'https://github.com/thebadcc/thebad.cc/blob/main/images/portalGIF_v1.1.gif?raw=true',
+
+    iconSize:     [38, 38], // size of the icon
+    iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+    popupAnchor:  [20, -3] // point from which the popup should open relative to the iconAnchor
+});
+
+var yx = L.latLng;
+
+var xy = function(x, y) {
+    if (L.Util.isArray(x)) {    // When doing xy([x, y]);
+        return yx(x[1], x[0]);
+    }
+    return yx(y, x);  // When doing xy(x, y);
+};
+
+
+L.marker([550, 450], {icon: greenIcon}).addTo(map).bindPopup(    '<a target=blank href=#>16 Rand Extension</a>');
+
+
+
 
