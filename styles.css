@@ -805,10 +805,11 @@ padding: 10px;
 }
 
 
-/* world map */
+/* world map v1 */
 
 .worldmap-container {
 outline: auto;
+display: none;
 }
 
 .worldmap {
@@ -879,3 +880,13 @@ outline: auto;
   from {opacity: 0;}
   to {opacity:1 ;}
 }
+
+
+/* world map v2 */
+
+		#map {
+			width: 100%;
+			height: 100%;
+      background: black;
+      outline: auto;
+		}
