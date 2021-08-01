@@ -1,30 +1,13 @@
 
 
-	var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+	var map = L.map('map', {
+    crs: L.CRS.Simple
+});
 
-	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-		maxZoom: 18,
-		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-		id: 'mapbox/streets-v11',
-		tileSize: 512,
-		zoomOffset: -1
-	}).addTo(mymap);
+var bounds = [[0,0], [1000,1000]];
+var image = L.imageOverlay('https://github.com/thebadcc/thebad.cc/blob/main/images/world_map_v1.5.png?raw=true', bounds).addTo(map);
 
-	L.marker([51.5, -0.09]).addTo(mymap);
-
-	L.circle([51.508, -0.11], {
-		color: 'red',
-		fillColor: '#f03',
-		fillOpacity: 0.5,
-		radius: 500
-	}).addTo(mymap);
-
-	L.polygon([
-		[51.509, -0.08],
-		[51.503, -0.06],
-		[51.51, -0.047]
-	]).addTo(mymap);
+map.fitBounds(bounds);
 
 
 
