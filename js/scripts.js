@@ -5,7 +5,7 @@
 });
 
 var bounds = [[0,0], [1000,1000]];
-var image = L.imageOverlay('https://github.com/thebadcc/thebad.cc/blob/main/images/world_map_v1.5.png?raw=true', bounds).addTo(map);
+var image = L.imageOverlay('https://i.pinimg.com/originals/21/44/20/21442002649c81679bb9bd1b1123fd14.jpg', bounds).addTo(map);
 
 map.fitBounds(bounds);
 
