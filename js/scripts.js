@@ -1,13 +1,12 @@
 var map = L.map('map', {
     crs: L.CRS.Simple,
-      minZoom: -1
+      minZoom: 1
 });
 
-var bounds = [[-1000,-1000], [3021.5,3023]];
+var bounds = [[-500,-500], [1021.5,1023]];
 var image = L.imageOverlay('https://github.com/thebadcc/thebad.cc/blob/main/images/world_map_v1.5.png?raw=true', bounds).addTo(map);
 
 map.fitBounds(bounds);
-
 
 
 (function($){
