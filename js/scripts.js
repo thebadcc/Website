@@ -1,7 +1,7 @@
 L.control.attribution(false);
 var map = L.map('map', {
     crs: L.CRS.Simple,
-minZoom: -1
+minZoom: 1
 	
 });
 
