@@ -290,6 +290,7 @@ color: white;
 
 .pages {
     display: none;
+	outline: auto;
 }
 
 .login {
