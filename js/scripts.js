@@ -6,7 +6,7 @@ minZoom: 1
 });
 
 
-var bounds = [[-600,600], [600,-600]];
+var bounds = [[0,0], [1000,-1000]];
 var image = L.imageOverlay('https://github.com/thebadcc/thebad.cc/blob/main/images/world_map_v1.5.png?raw=true', bounds).addTo(map);
 
 map.fitBounds(bounds);
