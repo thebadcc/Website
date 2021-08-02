@@ -2,7 +2,7 @@ var map = L.map('map', {
     crs: L.CRS.Simple,
 });
 var bounds = [[0,0], [900,900]];
-var image = L.imageOverlay('https://github.com/thebadcc/thebad.cc/blob/main/images/world_map_v1.5.png?raw=true', bounds).addTo(map);
+var image = L.imageOverlay('https://github.com/thebadcc/thebad.cc/blob/main/images/world_map_v1.6.png?raw=true', bounds).addTo(map);
 
 var greenIcon = L.icon({
     iconUrl: 'https://github.com/thebadcc/thebad.cc/blob/main/images/portalGIF_v1.1.gif?raw=true',
@@ -11,7 +11,7 @@ var greenIcon = L.icon({
     popupAnchor:  [25, 0]
 });
 
-L.marker([-655, -240], {icon: greenIcon}).addTo(map).bindPopup('<a target=_blank href = "https://www.cryptovoxels.com/play?coords=W@60E,458S,1.5U">16 Rand Extension</a>');
+L.marker([655, 240], {icon: greenIcon}).addTo(map).bindPopup('<a target=_blank href = "https://www.cryptovoxels.com/play?coords=W@60E,458S,1.5U">16 Rand Extension</a>');
 
 (function($){
  $(function(){
