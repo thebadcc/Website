@@ -290,7 +290,7 @@ color: white;
 
 .pages {
     display: none;
-	outline: auto;
+	
 }
 
 .login {
@@ -602,6 +602,7 @@ a, u {
 .page {
   display: none;
   position: relative;
+outline: auto;
 }
 @media (max-width: 1000px) {
   .page {
