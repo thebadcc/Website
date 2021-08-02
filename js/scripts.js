@@ -4,7 +4,7 @@
     crs: L.CRS.Simple
 });
 
-var bounds = [[0,0], [1000,1000]];
+var bounds = [[-26.5,-25], [1021.5,1023]];
 var image = L.imageOverlay('https://i.pinimg.com/originals/21/44/20/21442002649c81679bb9bd1b1123fd14.jpg', bounds).addTo(map);
 
 map.fitBounds(bounds);
