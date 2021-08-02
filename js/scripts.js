@@ -8,13 +8,6 @@ var map = L.map('map', {
 var bounds = [[-500,500], [0,0]];
 var image = L.imageOverlay('https://github.com/thebadcc/thebad.cc/blob/main/images/world_map_v1.5.png?raw=true', bounds).addTo(map);
 
-map.fitBounds(bounds);
-
-map.setMaxBounds(bounds);
-map.on('drag', function() {
-    map.panInsideBounds(bounds, { animate: false });
-});
-setTimeout(function(){ map.invalidateSize()}, 1);
 var greenIcon = L.icon({
     iconUrl: 'https://github.com/thebadcc/thebad.cc/blob/main/images/portalGIF_v1.1.gif?raw=true',
     iconSize:     [50, 50], 
@@ -234,10 +227,12 @@ async function getAccount() {
     legalLinks.style = "display: block !important";
     metaMaskRequired.style = "display: none !important";
 
-  map.invalidateSize();
-  map.fitBounds(myBounds2, {
-    maxZoom: 10
-  };
+map.fitBounds(bounds);
+map.setMaxBounds(bounds);
+map.on('drag', function() {
+    map.panInsideBounds(bounds, { animate: false });
+});
+ map.invalidateSize();
 	
 }
 
