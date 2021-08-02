@@ -886,4 +886,5 @@ display: none;
 #map {
 	height: 100%;
 	outline: auto;
+	background: #333333;
 }
