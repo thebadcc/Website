@@ -233,6 +233,11 @@ async function getAccount() {
     row.style = "display: none !important";
     legalLinks.style = "display: block !important";
     metaMaskRequired.style = "display: none !important";
+
+  map.invalidateSize();
+  map.fitBounds(myBounds2, {
+    maxZoom: 10
+  };
 	
 }
 
@@ -258,16 +263,6 @@ $(document).ready(function() {
   }, 15);
 });
 
-
-$('#search-bar').keyup(function(){
-    $('.badCards').hide();
-    var txt = $('#search-bar').val();
-    $('.badCards').each(function(){
-       if($(this).text().toUpperCase().indexOf(txt.toUpperCase()) != -1){
-           $(this).show();
-       }
-    });
-});
 
 
 //ETH_Call Functions
@@ -343,11 +338,4 @@ sendEthButton.addEventListener('click', () => {
     .catch((error) => console.error); 
   }
 });
-
-
-function p1() {
-  var popup = document.getElementById("myPopup");
-  popup.classList.toggle("show");
-}
-
 
