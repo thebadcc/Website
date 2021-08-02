@@ -1,4 +1,4 @@
- var map = L.map('map', {
+var map = L.map('map', {
     crs: L.CRS.Simple,
 });
 var bounds = [[0,0], [500,500]];
@@ -221,11 +221,8 @@ async function getAccount() {
 	$('#nav3').fadeIn();
     row.style = "display: none !important";
     legalLinks.style = "display: block !important";
-    metaMaskRequired.style = "display: none !important";
-
-
-map.fitBounds(bounds);
-map.setMaxBounds(bounds);
+    map.fitBounds(bounds);
+    map.setMaxBounds(bounds);
 	
 }
 
