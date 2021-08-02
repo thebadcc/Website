@@ -11,7 +11,7 @@ var greenIcon = L.icon({
     popupAnchor:  [25, 0]
 });
 
-L.marker([655, 240], {icon: greenIcon}).addTo(map).bindPopup('<a target=_blank href = "https://www.cryptovoxels.com/play?coords=W@60E,458S,1.5U">16 Rand Extension</a>');
+L.marker([655, 440], {icon: greenIcon}).addTo(map).bindPopup('<a target=_blank href = "https://www.cryptovoxels.com/play?coords=W@60E,458S,1.5U">16 Rand Extension</a>');
 
 (function($){
  $(function(){
