@@ -1,7 +1,7 @@
 var map = L.map('map', {
     crs: L.CRS.Simple,
 });
-var bounds = [[0,0], [800,800]];
+var bounds = [[0,0], [900,900]];
 var image = L.imageOverlay('https://github.com/thebadcc/thebad.cc/blob/main/images/world_map_v1.5.png?raw=true', bounds).addTo(map);
 
 var greenIcon = L.icon({
