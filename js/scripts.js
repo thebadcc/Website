@@ -5,7 +5,7 @@ var map = L.map('map', {
 });
 
 
-var bounds = [[0,0], [500,500]];
+var bounds = [[0,0], [5000,5000]];
 var image = L.imageOverlay('https://github.com/thebadcc/thebad.cc/blob/main/images/world_map_v1.5.png?raw=true', bounds).addTo(map);
 
 map.fitBounds(bounds);
