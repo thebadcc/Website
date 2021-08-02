@@ -14,6 +14,7 @@ map.setMaxBounds(bounds);
 map.on('drag', function() {
     map.panInsideBounds(bounds, { animate: false });
 });
+setTimeout(function(){ map.invalidateSize()}, 1);
 var greenIcon = L.icon({
     iconUrl: 'https://github.com/thebadcc/thebad.cc/blob/main/images/portalGIF_v1.1.gif?raw=true',
     iconSize:     [50, 50], 
