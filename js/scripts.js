@@ -3,7 +3,7 @@ var map = L.map('map', {
 
 });
 
-var bounds = [[-1000,-1000], [1000,1000]];
+var bounds = [[-2000,-2000], [1000,1000]];
 var image = L.imageOverlay('https://github.com/thebadcc/thebad.cc/blob/main/images/world_map_v1.5.png?raw=true', bounds).addTo(map);
 
 map.fitBounds(bounds);
