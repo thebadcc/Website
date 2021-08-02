@@ -887,4 +887,5 @@ display: none;
 	height: 100%;
 	outline: auto;
 	background: #333333;
+	cursor: url('https://github.com/thebadcc/thebad.cc/blob/main/images/cursor.gif?raw=true') 45 45, pointer; 
 }
