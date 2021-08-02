@@ -1,12 +1,12 @@
 /* HTML & Body */
 html {
-  --scrollbarBG: #CFD8DC;
-  --thumbBG: #90A4AE;
+  --scrollbarBG: #000000;
+  --thumbBG: #FFFFFF;
 	
 	background: black;
 }
 body::-webkit-scrollbar {
-  width: 11px;
+  width: 15px;
 }
 body {
   scrollbar-width: thin;
