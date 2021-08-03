@@ -911,8 +911,12 @@ display: none;
     border: none;	
 }
 
-.vote::-webkit-scrollbar {
-  width: 0px;
-    background: transparent; 
+.voteScroll {
+ height: 100%;
+    position: absolute;
+    background: black;
+    width: 36px;
+    z-index: 1;
+    right: 9%;
+    margin-top: -20px;
 }
-
