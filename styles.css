@@ -905,13 +905,14 @@ display: none;
 	cursor: url('https://github.com/thebadcc/thebad.cc/blob/main/images/cursor.gif?raw=true') 45 45, pointer; 
 }
 
-#vote {
+.vote {
     width: 100%;
     height: 100%;
     border: none;	
 }
 
-#vote::-webkit-scrollbar {
-  display: none;
+.vote::-webkit-scrollbar {
+  width: 0px;
+    background: transparent; 
 }
 
