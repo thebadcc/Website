@@ -908,7 +908,9 @@ display: none;
 .vote {
     width: 100%;
     height: 100%;
-    border: none;	
+    border: none;
+    position: relative;
+    top: -83;
 }
 
 .voteScroll {
