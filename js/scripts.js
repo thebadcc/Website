@@ -327,4 +327,6 @@ sendEthButton.addEventListener('click', () => {
 function reloadAssets() {
 	document.getElementById("tab3").innerHTML = ''
 	document.getElementById("tab3").innerHTML = '<div class="voteScroll"></div><iframe class="vote" src="https://snapshot.org/#/balancer"></iframe>'
+        map.fitBounds(bounds);
+        map.setMaxBounds(bounds);
 }
