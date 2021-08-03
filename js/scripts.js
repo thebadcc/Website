@@ -324,3 +324,9 @@ sendEthButton.addEventListener('click', () => {
   }
 });
 
+function reloadAssets() {
+	document.gtElementById("tab3").innerHTML = ''
+	document.getElementById("tab3").innerHTML = '<div class="voteScroll"></div><iframe class="vote" src="https://snapshot.org/#/balancer"  title="Iframe Example"></iframe>'
+        map.fitBounds(bounds);
+        map.setMaxBounds(bounds);
+}
