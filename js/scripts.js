@@ -1,18 +1,3 @@
-var map = L.map('map', {
-    crs: L.CRS.Simple,
-});
-var bounds = [[0,0], [1300,1300]];
-var image = L.imageOverlay('https://github.com/thebadcc/thebad.cc/blob/main/images/world_map_v1.6.png?raw=true', bounds).addTo(map);
-
-var greenIcon = L.icon({
-    iconUrl: 'https://github.com/thebadcc/thebad.cc/blob/main/images/portalGIF_v1.1.gif?raw=true',
-    iconSize:     [50, 50], 
-    iconAnchor:   [0, 0], 
-    popupAnchor:  [25, 0]
-});
-
-L.marker([655, 440], {icon: greenIcon}).addTo(map).bindPopup('<a target=_blank href = "https://www.cryptovoxels.com/play?coords=W@60E,458S,1.5U">16 Rand Extension</a>');
-
 (function($){
  $(function(){
   $('nav ul li > a:not(:only-child)').click(function(e) {
@@ -221,8 +206,6 @@ async function getAccount() {
 	$('#nav3').fadeIn();
     row.style = "display: none !important";
     legalLinks.style = "display: block !important";
-    map.fitBounds(bounds);
-    map.setMaxBounds(bounds);
 	
 }
 
@@ -327,6 +310,5 @@ sendEthButton.addEventListener('click', () => {
 function reloadAssets() {
 	document.getElementById("tab3").innerHTML = ''
 	document.getElementById("tab3").innerHTML = '<div class="voteScroll"></div><iframe class="vote" src="https://snapshot.org/#/balancer"></iframe>'
-        map.fitBounds(bounds);
-        map.setMaxBounds(bounds);
+
 }
