@@ -1,3 +1,24 @@
+
+$(document).ready(function() {
+  
+  var counter = 0;
+  var c = 0;
+  var i = setInterval(function(){
+      $(".loading-page .counter h1").html(c + "%");
+      $(".loading-page .counter hr").css("width", c + "%");
+    counter++;
+    c++;
+      
+    if(counter == 101) {
+        clearInterval(i);
+        $('.loading-page').fadeOut();
+	$('.navigation').show();
+	$('.site-footer').show();
+	    
+    }
+  }, 15);
+});
+
 (function($){
  $(function(){
   $('nav ul li > a:not(:only-child)').click(function(e) {
@@ -172,9 +193,7 @@ if (typeof window.ethereum !== 'undefined') {
 const ethereumButton = document.querySelector('.metaMask');
 const showAccount = document.querySelector('.showAccount');
 const connectAccount = document.querySelector('.connectAccount');
-const nav1 = document.getElementById("nav1");
-const nav3 = document.getElementById("nav3");
-const nav4 = document.getElementById("nav4");
+
 const motto = document.querySelector('.motto');
 const motto2 = document.querySelector('.motto2');
 const login = document.querySelector('.login');
@@ -203,10 +222,6 @@ async function getAccount() {
     showAccount.innerHTML = fullLogIn;
     connectAccount.innerHTML = "";
     $('.login').fadeOut();
-    $('.page').fadeIn();
-	$('#nav1').fadeIn();
-	$('#nav2').fadeIn();
-	$('#nav3').fadeIn();
     row.style = "display: none !important";
     legalLinks.style = "display: block !important";
     navigation.style = "display: none !important";
@@ -215,99 +230,5 @@ async function getAccount() {
 }
 
 
-$(document).ready(function() {
-  
-  var counter = 0;
-  var c = 0;
-  var i = setInterval(function(){
-      $(".loading-page .counter h1").html(c + "%");
-      $(".loading-page .counter hr").css("width", c + "%");
-    counter++;
-    c++;
-      
-    if(counter == 101) {
-        clearInterval(i);
-        $('.loading-page').fadeOut();
-	$('.navigation').show();
-	$('.pages').show();
-	$('.site-footer').show();
-	    
-    }
-  }, 15);
-});
 
 
-
-//ETH_Call Functions
-
-const inputOne = document.getElementById('inputOne');
-const inputTwo = document.getElementById('inputTwo');
-const response = document.getElementById('responseCall');
-const contractABI = [{"constant":true,"inputs":[],"name":"mintingFinished","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"unpause","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_amount","type":"uint256"}],"name":"mint","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_value","type":"uint256"}],"name":"burn","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"paused","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"finishMinting","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"pause","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"remaining","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"amount","type":"uint256"}],"name":"Mint","type":"event"},{"anonymous":false,"inputs":[],"name":"MintFinished","type":"event"},{"anonymous":false,"inputs":[],"name":"Pause","type":"event"},{"anonymous":false,"inputs":[],"name":"Unpause","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"burner","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Burn","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"owner","type":"address"},{"indexed":true,"name":"spender","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Transfer","type":"event"}];
-const contractAddress = "0x0f5d2fb29fb7d3cfee444a200298f468908cc942";
-const provider = ethers.getDefaultProvider();
-const erc20 = new ethers.Contract(contractAddress, contractABI, provider);
-
-const abi = [
-    "function transfer(address to, uint value)"
-];
-const iface = new ethers.utils.Interface(abi)
-const sendEthButton = document.querySelector('.executeTx');
-
-sendEthButton.addEventListener('click', () => {
-  const sb = document.querySelector('#dataFunction');
-  console.log(sb.selectedIndex);
-  if (sb.selectedIndex == 0) {
-
-  } else if (sb.selectedIndex == 1) {
-	 const balanceOf = erc20.balanceOf(inputOne.value);
-	 console.log(balanceOf);
-	 const printBalanceOf = async () => {
-		const a = await balanceOf;
-		
-		 const b = ethers.utils.formatUnits(a, 18)
-		 response.innerHTML = b;
-		 console.log(b);
-	};
-	printBalanceOf();  
-  } else if (sb.selectedIndex == 2) {
-	const data = iface.encodeFunctionData("mineToken");
-	  ethereum
-    .request({
-      method: 'eth_sendTransaction',
-      params: [
-        {
-          from: accounts[0],
-          to: '0x0f5d2fb29fb7d3cfee444a200298f468908cc942',
-          value: '0x00',
-          gasPrice: '0x09184e72a000',
-          gas: '0x2710',
-	  data: data,  
-        },
-      ],
-    })
-    .then((txHash) => console.log(txHash))
-    .catch((error) => console.error);  
-  } else if (sb.selectedIndex == 3) {
-	  const tokenNumber = ethers.utils.parseUnits(inputTwo.value, 18);
-	  console.log(tokenNumber);
-	const data2 = iface.encodeFunctionData("transfer", [inputOne.value, tokenNumber]);
-	  console.log(data2);
-	ethereum
-    .request({
-      method: 'eth_sendTransaction',
-      params: [
-        {
-          from: accounts[0],
-          to: '0x0f5d2fb29fb7d3cfee444a200298f468908cc942',
-          value: '0x00',
-          gasPrice: '0x09184e72a000',
-          gas: '0x2710',
-	  data: data2,  
-        },
-      ],
-    })
-    .then((txHash) => console.log(txHash))
-    .catch((error) => console.error); 
-  }
-});
