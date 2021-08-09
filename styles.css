@@ -313,7 +313,9 @@ color: white;
 }
 
 .login {
-
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 25px;
 }
 
 .motto {
