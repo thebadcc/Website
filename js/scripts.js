@@ -199,9 +199,7 @@ const motto = document.querySelector('.motto');
 const motto2 = document.querySelector('.motto2');
 const login = document.querySelector('.login');
 const page = document.querySelector('.page');
-const row = document.querySelector('.row');
 const navigation = document.querySelector('.navigation');
-const legalLinks = document.querySelector('.legal-links');
 const portal = document.querySelector('.portal');
 const siteFooter = document.querySelector('site-footer');
 const metaMaskRequired = document.querySelector('.metaMaskRequired');
@@ -223,15 +221,9 @@ async function getAccount() {
     showAccount.innerHTML = fullLogIn;
     connectAccount.innerHTML = "";
     $('.login').fadeOut();
-	    $('.page').fadeIn();
-	$('#nav1').fadeIn();
-	$('#nav2').fadeIn();
-	$('#nav3').fadeIn();
-    row.style = "display: none !important";
-    legalLinks.style = "display: block !important";
-    navigation.style = "display: none !important";
-    siteFooter.style = "display: none !important";
-	portal.style = "display: block !important";
+    $('.navigation').fadeOut();
+    $('.site-footer').fadeOut();
+  $('.portal').fadeIn();
 }
 
 
