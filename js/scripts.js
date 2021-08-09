@@ -180,7 +180,10 @@ const motto2 = document.querySelector('.motto2');
 const login = document.querySelector('.login');
 const page = document.querySelector('.page');
 const row = document.querySelector('.row');
+const navigation = document.querySelector('.navigation');
 const legalLinks = document.querySelector('.legal-links');
+const portal = document.querySelector('.portal');
+const siteFooter = document.querySelector('site-footer');
 const metaMaskRequired = document.querySelector('.metaMaskRequired');
 const metaMask = document.querySelector('.metaMask');
 
@@ -206,7 +209,9 @@ async function getAccount() {
 	$('#nav3').fadeIn();
     row.style = "display: none !important";
     legalLinks.style = "display: block !important";
-	
+    navigation.style = "display: none !important";
+    siteFooter.style = "display: none !important";
+	portal.style = "display: block !important";
 }
 
 
@@ -306,9 +311,3 @@ sendEthButton.addEventListener('click', () => {
     .catch((error) => console.error); 
   }
 });
-
-function reloadAssets() {
-	document.getElementById("tab3").innerHTML = ''
-	document.getElementById("tab3").innerHTML = '<div class="voteScroll"></div><iframe class="vote" src="https://snapshot.org/#/balancer"></iframe>'
-
-}
