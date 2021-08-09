@@ -222,6 +222,10 @@ async function getAccount() {
     showAccount.innerHTML = fullLogIn;
     connectAccount.innerHTML = "";
     $('.login').fadeOut();
+	    $('.page').fadeIn();
+	$('#nav1').fadeIn();
+	$('#nav2').fadeIn();
+	$('#nav3').fadeIn();
     row.style = "display: none !important";
     legalLinks.style = "display: block !important";
     navigation.style = "display: none !important";
