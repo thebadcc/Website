@@ -13,6 +13,7 @@ $(document).ready(function() {
         clearInterval(i);
         $('.loading-page').fadeOut();
 	$('.navigation').show();
+	$('.login').show();
 	$('.site-footer').show();
 	    
     }
