@@ -192,6 +192,7 @@ if (typeof window.ethereum !== 'undefined') {
 
 })
 
+const ethereumButton = document.querySelector('.metaMask');
 const login = document.querySelector('.login');
 const page = document.querySelector('.page');
 const navigation = document.querySelector('.navigation');
