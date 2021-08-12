@@ -1,4 +1,4 @@
-
+/* Loading Bar*/
 $(document).ready(function() {
   
   var counter = 0;
@@ -20,6 +20,7 @@ $(document).ready(function() {
   }, 15);
 });
 
+/* Navigation Menu*/
 (function($){
  $(function(){
   $('nav ul li > a:not(:only-child)').click(function(e) {
