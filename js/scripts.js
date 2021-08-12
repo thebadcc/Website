@@ -192,19 +192,12 @@ if (typeof window.ethereum !== 'undefined') {
 
 })
 
-const ethereumButton = document.querySelector('.metaMask');
-const showAccount = document.querySelector('.showAccount');
-const connectAccount = document.querySelector('.connectAccount');
-
-const motto = document.querySelector('.motto');
-const motto2 = document.querySelector('.motto2');
 const login = document.querySelector('.login');
 const page = document.querySelector('.page');
 const navigation = document.querySelector('.navigation');
 const portal = document.querySelector('.portal');
 const siteFooter = document.querySelector('site-footer');
-const metaMaskRequired = document.querySelector('.metaMaskRequired');
-const metaMask = document.querySelector('.metaMask');
+
 
 ethereumButton.addEventListener('click', () => {
   getAccount();
@@ -212,15 +205,7 @@ ethereumButton.addEventListener('click', () => {
 });
 
 async function getAccount() {
-    accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-    var logIn = String(accounts);
-    var front = logIn.substring(0, 6);
-    var middle = "...";
-    var back = logIn.substring(38, 42);
-    var fullLogIn = front.concat(middle, back)
-    metaMask.style = "width: auto !important";
-    showAccount.innerHTML = fullLogIn;
-    connectAccount.innerHTML = "";
+    
     $('.login').fadeOut();
     $('.navigation').fadeOut();
     $('.site-footer').fadeOut();
