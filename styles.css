@@ -530,7 +530,6 @@ color:white;
 {
   .site-footer
   {
-    padding-bottom:0
   }
   .site-footer .copyright-text,.site-footer .social-icons, .legal-links
   {
@@ -723,72 +722,7 @@ outline: auto;
   }
 }
 
-/* BAD Token Page */
 
-.badToken {
-    position: relative;
-    color: white;
-    display: block;
-    font-size: 1.9em;
-}
-
-.badTokenCoin img {
-float: left;
-    width: 80;
-    margin-left: -20px;
-    margin-right: -10px;
-}
-
-.badToken:before {
-    font-size: 1.5em;
-    content: "\005B";
-    color: #737373;
-}
-
-.badToken:after {
-    font-size: 1.5em;
-    content: "\005D";
-    color: #737373;
-}
-
-.badInformation {
-	list-style-type: none;
-	color: #737373;
-	padding: 0;
-}
-
-.functionButton {
-    background: #dcdcdc;
-    color: black;
-    outline: auto;
-    height: 30px;
-    font-family: system-ui;
-    font-size: 15;
-}
-
-@media only screen and (max-width: 800px) {
-.functionButton {
-    width: 100%;
-}
-	
-}
-
-.badCode {
-padding: 10px;
-    border: 1px solid white;
-    border-radius: 10px;
-}
-
-.badTokenContainer {
-  margin: 0 auto;
-}
-
-.badTokenResources {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 2fr));
-  grid-gap: 20px;
-  justify-content: center;
-}
 
 .col--1 {
     float: left;
@@ -824,34 +758,3 @@ padding: 10px;
 	
 }
 
-
-/* world map v1 */
-
-.worldmap-container {
-outline: auto;
-
-}
-
-.metaPortal {
-	height:100%;
-	width:100%;
-	border:none;
-}
-
-.vote {
-    width: 100%;
-    height: 100%;
-    border: none;
-    position: relative;
-    top: -83;
-}
-
-.voteScroll {
- height: 100%;
-    position: absolute;
-    background: black;
-    width: 36px;
-    z-index: 1;
-    right: 9%;
-    margin-top: -20px;
-}
