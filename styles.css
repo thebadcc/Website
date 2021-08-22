@@ -225,6 +225,7 @@ nav ul li ul li a {
 	background: black;
 	padding-top: 30px;
 	position: absolute;
+	display: none;
 }
 .nav-container {
 	padding: 0 !important
@@ -310,6 +311,7 @@ color: white;
 .login {
     padding-right: 10%;
     padding-left: 10%;
+    display: none;
 }
 
 .motto {
