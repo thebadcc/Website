@@ -2,11 +2,23 @@
 html {
 	background: black;
 }
+/* HTML & Body */
+html {
 
-
-.portal {
-	display: none;
+	
+	background: black;
 }
+body::-webkit-scrollbar {
+  width: 15px;
+}
+body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+	margin: 0;
+	height: 100%;
+	font-family: system-ui;
+}
+
 
 
 /* Loading Page */
