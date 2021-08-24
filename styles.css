@@ -494,7 +494,9 @@ color:white;
 }
 .site-footer .social-icons
 {
-  text-align:right
+  text-align:right;
+  position: relative;
+    right: 15;
 }
 .site-footer .social-icons a
 {
