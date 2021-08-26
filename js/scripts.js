@@ -1,24 +1,27 @@
-/* Loading Bar*/
-$(document).ready(function() {
-  
-  var counter = 0;
-  var c = 0;
-  var i = setInterval(function(){
-      $(".loading-page .counter h1").html(c + "%");
-      $(".loading-page .counter hr").css("width", c + "%");
-    counter++;
-    c++;
-      
-    if(counter == 101) {
-        clearInterval(i);
-        $('.loading-page').fadeOut();
-	$('.navigation').show();
-	$('.login').show();
-	$('.site-footer').show();
-	    
-    }
-  }, 15);
-});
 
+(function () {
+    let card  = document.getElementsByClassName('card')[0],
+        moved = 0,
+        interval;
 
+    if (!card) return;
+   
+    card.addEventListener('click', function (event) {
 
+        clearInterval(interval);
+        card.style.transform = '';
+       
+        // Do not flip the card if the user is trying to
+        // tap a link.
+        if (event.target.nodeName === 'A') {
+            return;
+        }
+       
+        let cName   = card.getAttribute('data-toggle-class');
+        let toggled = card.classList.contains(cName);
+        card.classList[toggled ? 'remove' : 'add'](cName);
+       
+    });
+
+   
+})();
