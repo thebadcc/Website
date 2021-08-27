@@ -23,21 +23,6 @@
   font-size: 12px;
 }
 
-.banner {
-  font-size: 5px;
-  position: relative;
-    bottom: 70px;
-    color: white;
-}
-
-.backBanner {
-    font-size: 5px;
-    position: relative;
-    top: 20px;
-    color: white;
-    float: right;
-}
-
 body {
   align-items: center;
   background: linear-gradient(135deg, #404040, #333);
@@ -78,7 +63,8 @@ a:hover {
 
 .card-front,
 .card-back {
-  
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   background: repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.3), transparent 1px, rgba(0, 0, 0, 0.3) 2px);
   background-size: 3px 3px;
   background-color: #302f34;
@@ -113,7 +99,12 @@ background: repeating-linear-gradient(
     border-radius: 10px;
 }
 
-
+.layer pre {
+  font-size: 5px;
+  position: relative;
+    bottom: 70px;
+    color: white;
+}
 .card-back .layer:after {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), transparent);
   content: "";
@@ -154,7 +145,8 @@ background: repeating-linear-gradient(
 }
 
 .card-front .layer {
-
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   display: flex;
   flex-direction: column;
   height: 100%;
